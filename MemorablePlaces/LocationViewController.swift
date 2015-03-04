@@ -21,6 +21,12 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
     @IBOutlet weak var myAltitudeLabel: UILabel!
     @IBOutlet weak var myAddressTextView: UITextView!
     
+    @IBAction func doFindMeButton(sender: AnyObject) {
+        //Get Current location and center map to that location.
+        manager.requestWhenInUseAuthorization()
+        manager.startUpdatingLocation()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,20 +52,30 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         manager = CLLocationManager()
         manager.delegate = self
         manager.desiredAccuracy = kCLLocationAccuracyBest
-        manager.requestWhenInUseAuthorization()
-        manager.startUpdatingLocation()
         myAddressTextView.text = ""
     }
 
     func locationManager(manager: CLLocationManager!, didUpdateLocations locations: [AnyObject]!) {
         var userLocation:CLLocation = locations[0] as CLLocation
         
-        //Set the labels
-        myLatitudeLabel.text = "Latitude: \(userLocation.coordinate.latitude)"
-        myLongitudeLabel.text = "Longitude: \(userLocation.coordinate.longitude)"
-        mySpeedLabel.text = "Speed: \(userLocation.speed)"
-        myCourseLabel.text = "Course: \(userLocation.course)"
-        myAltitudeLabel.text = "Altitude: \(userLocation.altitude)"
+        //Set location to new userLocation
+        var latitude:CLLocationDegrees = userLocation.coordinate.latitude
+        var longitude:CLLocationDegrees = userLocation.coordinate.longitude
+        
+        //Initialize zoom-level
+        var latDelta:CLLocationDegrees = 0.01
+        var lonDelta:CLLocationDegrees = 0.01
+        
+        //Define view variables
+        var span:MKCoordinateSpan = MKCoordinateSpanMake(latDelta, lonDelta)
+        var location:CLLocationCoordinate2D = CLLocationCoordinate2DMake(latitude, longitude)
+        var region:MKCoordinateRegion = MKCoordinateRegionMake(location, span)
+        
+        //Set the map to the region
+        myMapView.setRegion(region, animated: true)
+        
+        //Stop the location updating
+        manager.stopUpdatingLocation()
         
         //Nearest address
         CLGeocoder().reverseGeocodeLocation(userLocation, completionHandler: { (placemarks, error) -> Void in

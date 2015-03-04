@@ -70,8 +70,16 @@
                                 <rect key="frame" x="0.0" y="15" width="600" height="44"/>
                                 <items>
                                     <navigationItem title="My Map" id="514-FQ-MTK">
-                                        <barButtonItem key="leftBarButtonItem" title="Back" id="oud-mE-fQw"/>
-                                        <barButtonItem key="rightBarButtonItem" title="Find Me" id="tUX-cc-EO3"/>
+                                        <barButtonItem key="leftBarButtonItem" title="Back" id="oud-mE-fQw">
+                                            <connections>
+                                                <segue destination="PjC-c6-o7C" kind="show" id="ZtZ-qz-oVh"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Find Me" id="tUX-cc-EO3">
+                                            <connections>
+                                                <action selector="doFindMeButton:" destination="0ts-qz-osW" id="Qt7-Xa-VhG"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
