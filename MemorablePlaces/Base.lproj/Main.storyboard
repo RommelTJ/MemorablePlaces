@@ -153,7 +153,11 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="My Places" id="tPB-vp-ZRl">
-                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Lxj-kp-ayj"/>
+                        <barButtonItem key="rightBarButtonItem" title="Item" systemItem="add" id="Lxj-kp-ayj">
+                            <connections>
+                                <segue destination="0ts-qz-osW" kind="show" identifier="addPlace" id="Ry2-8v-ZNf"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <segue destination="0ts-qz-osW" kind="show" identifier="findPlace" id="aCA-Oq-7n8"/>
@@ -182,4 +186,7 @@
             <point key="canvasLocation" x="225" y="479"/>
         </scene>
     </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Ry2-8v-ZNf"/>
+    </inferredMetricsTieBreakers>
 </document>
