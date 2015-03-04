@@ -72,7 +72,7 @@
                                     <navigationItem title="My Map" id="514-FQ-MTK">
                                         <barButtonItem key="leftBarButtonItem" title="Back" id="oud-mE-fQw">
                                             <connections>
-                                                <segue destination="PjC-c6-o7C" kind="show" id="ZtZ-qz-oVh"/>
+                                                <segue destination="PjC-c6-o7C" kind="show" identifier="back" id="ZtZ-qz-oVh"/>
                                             </connections>
                                         </barButtonItem>
                                         <barButtonItem key="rightBarButtonItem" title="Find Me" id="tUX-cc-EO3">

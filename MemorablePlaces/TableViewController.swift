@@ -46,10 +46,12 @@ class TableViewController: UITableViewController {
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         activePlace = indexPath.row
-        self.navigationController?.navigationBarHidden = true
         self.performSegueWithIdentifier("findPlace", sender: indexPath)
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = true
+    }
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {

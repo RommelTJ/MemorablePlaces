@@ -124,6 +124,10 @@ class LocationViewController: UIViewController, CLLocationManagerDelegate, MKMap
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden = false
+    }
+    
 
     /*
     // MARK: - Navigation
